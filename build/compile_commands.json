@@ -1,0 +1,14 @@
+[
+{
+  "directory": "/home/maxim/Documents/OOP_project24/build",
+  "command": "/usr/bin/g++ -I/usr/include/gtk-4.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/graphene-1.0 -I/usr/lib/x86_64-linux-gnu/graphene-1.0/include -g -mfpmath=sse -msse -msse2 -pthread -o CMakeFiles/project.dir/main.cpp.o -c /home/maxim/Documents/OOP_project24/main.cpp",
+  "file": "/home/maxim/Documents/OOP_project24/main.cpp",
+  "output": "CMakeFiles/project.dir/main.cpp.o"
+},
+{
+  "directory": "/home/maxim/Documents/OOP_project24/build",
+  "command": "/usr/bin/g++ -I/usr/include/gtk-4.0 -I/usr/include/pango-1.0 -I/usr/include/glib-2.0 -I/usr/lib/x86_64-linux-gnu/glib-2.0/include -I/usr/include/harfbuzz -I/usr/include/freetype2 -I/usr/include/libpng16 -I/usr/include/libmount -I/usr/include/blkid -I/usr/include/fribidi -I/usr/include/cairo -I/usr/include/pixman-1 -I/usr/include/gdk-pixbuf-2.0 -I/usr/include/graphene-1.0 -I/usr/lib/x86_64-linux-gnu/graphene-1.0/include -g -o task/CMakeFiles/task.dir/task.cpp.o -c /home/maxim/Documents/OOP_project24/task/task.cpp",
+  "file": "/home/maxim/Documents/OOP_project24/task/task.cpp",
+  "output": "task/CMakeFiles/task.dir/task.cpp.o"
+}
+]

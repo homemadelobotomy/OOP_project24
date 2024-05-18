@@ -1,0 +1,6 @@
+/home/maxim/Documents/OOP_project24/build/CMakeFiles/project.dir
+/home/maxim/Documents/OOP_project24/build/CMakeFiles/edit_cache.dir
+/home/maxim/Documents/OOP_project24/build/CMakeFiles/rebuild_cache.dir
+/home/maxim/Documents/OOP_project24/build/task/CMakeFiles/task.dir
+/home/maxim/Documents/OOP_project24/build/task/CMakeFiles/edit_cache.dir
+/home/maxim/Documents/OOP_project24/build/task/CMakeFiles/rebuild_cache.dir
