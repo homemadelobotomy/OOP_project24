@@ -1,6 +1,6 @@
  #include <iostream>
 
-#include<gtkmm-4.0/gtkmm.h>
+#include <gtkmm-4.0/gtkmm.h>
 
 class MyWindow : public Gtk::Window {
 public:
@@ -23,7 +23,7 @@ MyWindow::MyWindow()
       m_Label("Выберите пользователя"),
       m_Button1("Пользователь 1"),
       m_Button2("Пользователь 2"),
-      m_Button3("Пользователь 3") {
+      m_Button3("User 4") {
     set_title("GTKmm Example");
     set_default_size(400, 200);
 

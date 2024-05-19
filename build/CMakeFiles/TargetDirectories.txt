@@ -1,3 +1,0 @@
-/home/maxim/Documents/OOP_project24/build/CMakeFiles/manadger.dir
-/home/maxim/Documents/OOP_project24/build/CMakeFiles/edit_cache.dir
-/home/maxim/Documents/OOP_project24/build/CMakeFiles/rebuild_cache.dir
