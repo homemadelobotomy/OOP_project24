@@ -1,2 +1,2 @@
-# Empty dependencies file for project.o.
+# Empty dependencies file for manadger.
 # This may be replaced when dependencies are built.
