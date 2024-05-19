@@ -23,7 +23,7 @@ MyWindow::MyWindow()
       m_Label("Выберите пользователя"),
       m_Button1("Пользователь 1"),
       m_Button2("Пользователь 2"),
-      m_Button3("Пользователь 3") {
+      m_Button3("Пользователь 4") {
     set_title("GTKmm Example");
     set_default_size(400, 200);
 
