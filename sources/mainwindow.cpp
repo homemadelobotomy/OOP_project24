@@ -22,21 +22,21 @@ MainWindow::MainWindow(std::string user_name, std::string password)
 }
 
 void MainWindow::on_button_income_clicked() {
-    SectionWindow *window = new SectionWindow("Доходы", {"Зарплата", "Инвестиции", "Дополнительный доход"});
+    Operation *window = new IncomeOperation();
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();
 }
 
 void MainWindow::on_button_expense_clicked() {
-    SectionWindow *window = new SectionWindow("Расходы", {"Жилье", "Транспорт", "Продукты"});
+    Operation *window = new OutComeOperation();
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();
 }
 
 void MainWindow::on_button_debt_clicked() {
-    SectionWindow *window = new SectionWindow("Долги", {"Кредиты", "Ипотека", "Личные займы"});
+    Operation *window = new DebtOperation();
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();

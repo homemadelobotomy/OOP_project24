@@ -3,6 +3,7 @@
 
 #include <gtkmm-4.0/gtkmm.h>
 #include "sectionwindow.h"
+#include "operation.h"
 
 class MainWindow : public Gtk::Window {
 public:
