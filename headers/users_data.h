@@ -14,7 +14,7 @@ char* read_users_db(int user_id);
 
 class UserWindow: public Gtk::Window{
   public:
-    UserWindow(const int user_id);
+    UserWindow(std::string username, std::string password);
   private:
     Gtk::Label label1;
     Gtk::Box box;

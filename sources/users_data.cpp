@@ -2,29 +2,29 @@
 #include "../headers/users_data.h"
 
 
-void write_users_db(unsigned number_of_users)
+void write_users_db(std::string username, std::string password)
 { 
-    
-    for(size_t i = 0; i < number_of_users; i++)
-    {
-        std::string file_name = "../user_data/user_data_" + std::to_string(i+1) + ".txt";
+        std::string file_name = "../user_data/user_data_" + username + "_" + password + ".txt";
         
         std::ofstream user_out;
         user_out.open(file_name,std::ios::out);
         
         user_out.close();
-    }
+    
 }
 
 
 
-char* read_users_db(int user_id)
+char* read_users_db(std::string username, std::string password)
 {
-    std::string file_name = "../user_data/user_data_" + std::to_string(user_id) + ".txt";   
+    std::string file_name = "../user_data/user_data_" + username + "_" + password + ".txt";   
     
     std::ifstream user_read_data;
     
     user_read_data.open(file_name);
+    if (!user_read_data.is_open()){
+        return (char*) "неверный логин или пароль";
+    }
     
     char* data  = new char[128];
     user_read_data.getline(data,128);
@@ -34,15 +34,14 @@ char* read_users_db(int user_id)
 }
 
 
-UserWindow::UserWindow(const int user_id):
+UserWindow::UserWindow(std::string username, std::string password):
 box(Gtk::Orientation::VERTICAL),
-label1(read_users_db(user_id))
+label1(read_users_db(username, password))
 {
     
-    set_title(std::to_string(user_id));
     set_default_size(600,600);
 
-
+    box.set_halign(Gtk::Align::CENTER);
     box.set_spacing(10);
     box.set_margin(10);
     set_child(box);

@@ -4,24 +4,29 @@
 
 
 class MyWindow : public Gtk::Window {
-public:
-    MyWindow();
-    void show_user_window(const int user_id);
-private:
-    Gtk::Box m_VBox;          // Вертикальный контейнер для всех виджетов
-    Gtk::Label m_Label;       // Надпись
-    Gtk::Button m_Button1;    // Первая кнопка
-    Gtk::Button m_Button2;    // Вторая кнопка
-    Gtk::Button m_Button3;    // Третья кнопка
 
-    void on_button1_clicked();
-    void on_button2_clicked();
-    void on_button3_clicked();
-    void on_user_window_hide();
+    
+ public:
+        void show_user_window();
+        std::string GetUsername(){return username;}
+        std::string GetPassword(){return password;}
+        
+        MyWindow();
 
-    void on_button_clicked();
+    private:
+        Gtk::Box box;
+        Gtk::Entry user_name_form;
+        Gtk::Entry password_form;
+        Gtk::Label user_name_label;
+        Gtk::Label password_label;
+        Gtk::Button login_button;
+        std::string username;
+        std::string password;
+        void on_login_button_clicked();
 
-    std::unique_ptr<UserWindow> user_window;
+        void on_user_window_hide();
+        
+        std::unique_ptr<UserWindow> user_window;
 };
 
 

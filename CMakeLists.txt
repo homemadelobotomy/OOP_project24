@@ -12,7 +12,12 @@ include_directories(${GTKMM_INCLUDE_DIRS})
 add_definitions(${GTKMM_CFLAGS_OTHER})
 
 
-add_executable(manadger main.cpp headers/user_pick_window.h headers/users_data.h  sources/user_pick_window.cpp sources/users_data.cpp)
+set(SOURCES main.cpp sources/users_data.cpp sources/user_pick_window.cpp)
+
+set(HEADERS  headers/users_data.h headers/user_pick_window.h )
+
+set(SOURCES_LIST ${SOURCES} ${HEADERS})
+add_executable(manadger ${SOURCES_LIST})
 
 target_link_libraries(manadger ${GTKMM_LIBRARIES})
 

@@ -10,9 +10,3 @@ int main(int argc, char* argv[]) {
 
     return app->make_window_and_run<MyWindow>(argc, argv);
 }
-// int main(){
-//     write_users_db(3);
-
-//     read_users_db(2);
-//     return 0;
-// }
