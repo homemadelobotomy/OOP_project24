@@ -12,9 +12,9 @@ include_directories(${GTKMM_INCLUDE_DIRS})
 add_definitions(${GTKMM_CFLAGS_OTHER})
 
 
-set(SOURCES main.cpp sources/users_data.cpp sources/user_pick_window.cpp)
+set(SOURCES main.cpp sources/users_data.cpp sources/user_pick_window.cpp sources/mainwindow.cpp sources/sectionwindow.cpp)
 
-set(HEADERS  headers/users_data.h headers/user_pick_window.h )
+set(HEADERS  headers/users_data.h headers/user_pick_window.h headers/mainwindow.h headers/sectionwindow.h)
 
 set(SOURCES_LIST ${SOURCES} ${HEADERS})
 add_executable(manadger ${SOURCES_LIST})

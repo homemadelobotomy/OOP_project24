@@ -1,7 +1,7 @@
 #include <gtkmm-4.0/gtkmm.h>
 #include "users_data.h"
 #include <memory>
-
+#include "mainwindow.h"
 
 class MyWindow : public Gtk::Window {
 
@@ -26,7 +26,7 @@ class MyWindow : public Gtk::Window {
 
         void on_user_window_hide();
         
-        std::unique_ptr<UserWindow> user_window;
+        std::unique_ptr<MainWindow> user_window;
 };
 
 
