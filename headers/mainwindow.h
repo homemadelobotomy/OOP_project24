@@ -8,6 +8,8 @@
 class MainWindow : public Gtk::Window {
 public:
     MainWindow(std::string user_name, std::string password);
+    std::string GetUsername(){return username;}
+    std::string GetPassword(){return password;}
 
 protected:
     void on_button_income_clicked();
@@ -15,6 +17,8 @@ protected:
     void on_button_debt_clicked();
 
 private:
+    std::string username;
+    std::string password;
     Gtk::Box vbox;
     Gtk::Button button_income;
     Gtk::Button button_expense;

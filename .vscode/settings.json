@@ -49,6 +49,17 @@
         "ctime": "cpp",
         "map": "cpp",
         "set": "cpp",
-        "cinttypes": "cpp"
-    }
+        "cinttypes": "cpp",
+        "condition_variable": "cpp",
+        "list": "cpp",
+        "ratio": "cpp",
+        "fstream": "cpp",
+        "mutex": "cpp",
+        "semaphore": "cpp",
+        "sstream": "cpp",
+        "stop_token": "cpp",
+        "thread": "cpp",
+        "valarray": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }

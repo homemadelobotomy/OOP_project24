@@ -1,7 +1,8 @@
 #include "../headers/mainwindow.h"
 
-MainWindow::MainWindow(std::string user_name, std::string password)
-    : button_income("Доходы"), button_expense("Расходы"), button_debt("Долги") {
+MainWindow::MainWindow(std::string user_name, std::string password_)
+    : button_income("Доходы"), button_expense("Расходы"), button_debt("Долги"),
+    username(user_name),password(password_) {
 
     set_title("Финансовый Контроль");
     set_default_size(300, 200);
@@ -22,21 +23,21 @@ MainWindow::MainWindow(std::string user_name, std::string password)
 }
 
 void MainWindow::on_button_income_clicked() {
-    Operation *window = new IncomeOperation();
+    Operation *window = new IncomeOperation(GetUsername(),GetPassword());
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();
 }
 
 void MainWindow::on_button_expense_clicked() {
-    Operation *window = new OutComeOperation();
+    Operation *window = new OutComeOperation(GetUsername(),GetPassword());
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();
 }
 
 void MainWindow::on_button_debt_clicked() {
-    Operation *window = new DebtOperation();
+    Operation *window = new DebtOperation(GetUsername(),GetPassword());
     window->set_transient_for(*this);
     window->set_modal(true);
     window->present();

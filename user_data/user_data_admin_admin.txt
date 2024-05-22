@@ -1,1 +1,6 @@
-kljhgfdhjkl;'lkjhg
+IncomeOperation
+123 24213 12
+OutComeOperation
+12332 232 0
+DebtOperation
+3322 56789 
