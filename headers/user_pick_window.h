@@ -1,7 +1,11 @@
+#ifndef USER_PICK_WINDOW_H
+#define USER_PICK_WINDOW_H
+
 #include <gtkmm-4.0/gtkmm.h>
-#include "users_data.h"
 #include <memory>
 #include "mainwindow.h"
+
+class MainWindow;
 
 class MyWindow : public Gtk::Window {
 
@@ -30,3 +34,4 @@ class MyWindow : public Gtk::Window {
 };
 
 
+#endif

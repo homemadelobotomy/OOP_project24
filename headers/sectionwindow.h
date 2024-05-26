@@ -8,7 +8,6 @@
 class SectionWindow : public Gtk::Window {
 public:
     SectionWindow(const std::string& title, const std::vector<std::string>& sections);
-
 private:
     Gtk::Box vbox;
     Gtk::Label label;

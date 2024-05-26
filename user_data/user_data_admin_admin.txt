@@ -1,6 +1,6 @@
 IncomeOperation
-123 24213 12
+12 24 36
 OutComeOperation
-12332 232 0
+12 12 12
 DebtOperation
 3322 56789 

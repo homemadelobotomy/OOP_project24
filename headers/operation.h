@@ -3,15 +3,19 @@
 
 
 #include <gtkmm-4.0/gtkmm.h>
+#include "mainwindow.h"
+#include "PieChart.h"
 
 class MainWindow;
+class MyWindow;
+
 class Operation: public Gtk::Window{
     public:
         
-        Operation(const std::string title);
-         ~Operation() {}
-        virtual void update_category(const double sum) = 0;
-        virtual void on_confirm_button() = 0;
+        Operation(MyWindow *user_window);
+        ~Operation() {}
+        void get_data(std::string oper_name,std::vector<double>& data);
+        void on_confirm_button(const std::string operation_type = "NULL");
     protected:
         Gtk::Label LabelCat1;    
         Gtk::Label LabelCat2;    
@@ -21,6 +25,7 @@ class Operation: public Gtk::Window{
         Gtk::Box box_for_oper3; 
         Gtk::Box box;
         
+        PieChart piechart;
         std::string username_;
         std::string password_;
 
@@ -28,14 +33,14 @@ class Operation: public Gtk::Window{
         Gtk::Entry EntryCat2;    // Поле ввода для категории 2
         Gtk::Entry EntryCat3;    // Поле ввода для категории 3
 
+        MyWindow* user_window;
+
+        Gtk::Label LabelTitle;
+        void on_exit_button();
         
-        void on_exit_button(){}
-    private:
-       
-
-        Gtk::Label LabelTitle;   // Название операции
-
         Gtk::Button confirm_button;
+        
+        std::vector<double> m_data;
 
         Gtk::Button exit_button;
 
@@ -44,52 +49,55 @@ class Operation: public Gtk::Window{
 };
 
 
+
+
 class IncomeOperation:public Operation{
     public:
-        std::string title = "Доходы";
-        
-        IncomeOperation(std::string username, std::string password): Operation(title){
+        IncomeOperation(MyWindow* user_window_ ): Operation(user_window_){
+            LabelTitle.set_text("Доходы");
             LabelCat1.set_text("Зарплата");
             LabelCat2.set_text("Переводы");
             LabelCat3.set_text("Пособия");
-            username_ = username;
-            password_ = password;
+
+            get_data("IncomeOperation",m_data);
+            piechart.set_data(m_data);
+            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &IncomeOperation::on_confirm_button_income_clicked));
 
         }
-        void update_category(const double sum) override{}
-        void on_confirm_button() override;
+        void on_confirm_button_income_clicked();
+        
 
 };
 
 class OutComeOperation:public Operation{
     public:
-        OutComeOperation(std::string username, std::string password): Operation("Расходы"){
+        OutComeOperation(MyWindow* user_window_ ): Operation(user_window_) {
+            LabelTitle.set_text("Доходы");
             LabelCat1.set_text("Необходимые расходы");
             LabelCat2.set_text("Развлечения ");
             LabelCat3.set_text("Сбережения");
-            username_ = username;
-            password_ = password;
+            get_data("OutComeOperation",m_data);
+            piechart.set_data(m_data);
+            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &OutComeOperation::on_confirm_button_outcome_clicked));
         }
-        void update_category(const double sum) override {
-            
-        }
-        void on_confirm_button() override;
+        
+        void on_confirm_button_outcome_clicked();
 
 };
 
 class DebtOperation:public Operation{
     public:
-        DebtOperation(std::string username, std::string password): Operation("Долги"){
+        DebtOperation(MyWindow* user_window_ ): Operation(user_window_){
+            LabelTitle.set_text("Задолженности");
             LabelCat1.set_text("Выплаты по кредиту");
             LabelCat2.set_text("Личный займ");
             box.remove(box_for_oper3);
-            username_ = username;
-            password_ = password;
+            get_data("DebtOperation",m_data);
+            piechart.set_data(m_data);
+            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &DebtOperation::on_confirm_button_debt_clicked));
         }
-        void update_category(const double sum) override {
-            
-        }
-        void on_confirm_button() override;
+        
+        void on_confirm_button_debt_clicked();
 };
 
 #endif

@@ -42,7 +42,7 @@ void MyWindow::show_user_window(){
         
     }
     
-    user_window = std::make_unique<MainWindow>(GetUsername(),GetPassword());
+    user_window = std::make_unique<MainWindow>(this);
     user_window->signal_hide().connect(sigc::mem_fun(*this, &MyWindow::on_user_window_hide));
     user_window->show();
 }
