@@ -3,9 +3,10 @@
 
 MyWindow::MyWindow():
     box(Gtk::Orientation::VERTICAL),
-    login_button("Login"),
+    login_button("Войти"),
     password_label("Пароль"),
-    user_name_label("Логин")
+    user_name_label("Логин"),
+    sign_up_button("Создать аккауунт")
     {
         set_default_size(400,300);
         
@@ -14,17 +15,25 @@ MyWindow::MyWindow():
         box.set_margin(10);
         set_child(box);
 
-        user_name_form.set_halign(Gtk::Align::CENTER);
+        //user_name_form.set_halign(Gtk::Align::CENTER);
+        box.set_halign(Gtk::Align::CENTER);
         box.append(user_name_label);
         box.append(user_name_form);
         box.append(password_label);
         box.append(password_form);
         box.append(login_button);
 
+        box.append(sign_up_button);
+
         login_button.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::on_login_button_clicked));
         password_form.set_visibility(false);
+        sign_up_button.signal_clicked().connect(sigc::mem_fun(*this,&MyWindow::on_sign_up_clicked));
     }
 
+void MyWindow::on_sign_up_clicked(){
+    SignUpWindow* sign_up_window = new SignUpWindow(this);
+    sign_up_window->show(); 
+}
 
 void MyWindow::on_login_button_clicked(){
     username = user_name_form.get_text();

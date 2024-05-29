@@ -116,7 +116,6 @@ Operation::Operation(MyWindow* user_window_):
             }
             write_in_file << lines[i] + "\n";
         }
-        piechart.queue_draw();
         write_in_file.close();
     }
     

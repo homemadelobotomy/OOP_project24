@@ -64,6 +64,8 @@ class IncomeOperation:public Operation{
             confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &IncomeOperation::on_confirm_button_income_clicked));
 
         }
+       
+        
         void on_confirm_button_income_clicked();
         
 

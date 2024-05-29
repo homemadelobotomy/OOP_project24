@@ -4,6 +4,7 @@
 #include <gtkmm-4.0/gtkmm.h>
 #include <memory>
 #include "mainwindow.h"
+#include "sign_up_window.h"
 
 class MainWindow;
 
@@ -24,10 +25,12 @@ class MyWindow : public Gtk::Window {
         Gtk::Label user_name_label;
         Gtk::Label password_label;
         Gtk::Button login_button;
+        Gtk::Button sign_up_button;
         std::string username;
         std::string password;
         void on_login_button_clicked();
-
+        
+        void on_sign_up_clicked();
         void on_user_window_hide();
         
         std::unique_ptr<MainWindow> user_window;
