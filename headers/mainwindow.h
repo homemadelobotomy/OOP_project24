@@ -6,6 +6,8 @@
 #include "sectionwindow.h"
 #include "operation.h"
 
+class Operation;
+
 class MainWindow : public Gtk::Window {
 public:
     MainWindow(MyWindow* user_window);
@@ -24,5 +26,7 @@ private:
     Gtk::Button button_debt;
     Gtk::Button exit_button;
 };
+void showOperation(const Operation& operation);
+
 
 #endif 

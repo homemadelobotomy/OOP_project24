@@ -2,25 +2,21 @@
 #define USERS_DATA_H
 
 #include <iostream>
-#include <fstream>
 #include <string>
-#include <vector>
-#include <gtkmm-4.0/gtkmm.h>
 
+class UserData{
+    public:
+      static UserData& getInstance();
+      void setUsername(std::string& username);
+      void setPassword(std::string& password);
+      std::string getUsername(){return username;}
+      std::string getPassword(){return password;}
 
-void write_users_db(unsigned number_of_users);
-
-char* read_users_db(int user_id);
-
-class UserWindow: public Gtk::Window{
-  public:
-    UserWindow(std::string username, std::string password);
-  private:
-    Gtk::Label label1;
-    Gtk::Box box;
+    private:
+      UserData(){}
+      std::string username;
+      std::string password;
 };
-
-  
 
 
 

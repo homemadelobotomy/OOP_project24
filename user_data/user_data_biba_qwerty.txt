@@ -1,0 +1,6 @@
+IncomeOperation
+0 0 0
+OutComeOperation
+0 0 0
+DebtOperation
+0 0 0

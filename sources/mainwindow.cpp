@@ -27,24 +27,19 @@ MainWindow::MainWindow(MyWindow* user_window_)
 }
 
 void MainWindow::on_button_income_clicked() {
-    Operation *window = new IncomeOperation(user_window);
-    window->set_transient_for(*this);
-    window->set_modal(true);
-    window->present();
+    std::unique_ptr<Operation> window = OperationFactory::createOperation("income");
+    showOperation(*window);
+    
 }
 
 void MainWindow::on_button_expense_clicked() {
-    Operation *window = new OutComeOperation(user_window);
-    window->set_transient_for(*this);
-    window->set_modal(true);
-    window->present();
+    std::unique_ptr<Operation> window = OperationFactory::createOperation("outcome");
+    showOperation(*window);
 }
 
 void MainWindow::on_button_debt_clicked() {
-    Operation *window = new DebtOperation(user_window)  ;
-    window->set_transient_for(*this);
-    window->set_modal(true);
-    window->present();
+    std::unique_ptr<Operation> window = OperationFactory::createOperation("debt");
+    showOperation(*window);
 }
 void MainWindow::on_exit_button_clicked(){
     this->hide();

@@ -1,0 +1,6 @@
+IncomeOperation
+12 12 12
+OutComeOperation
+3231 231 2242
+DebtOperation
+0 0 0

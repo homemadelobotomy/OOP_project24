@@ -36,10 +36,34 @@ void MyWindow::on_sign_up_clicked(){
 }
 
 void MyWindow::on_login_button_clicked(){
-    username = user_name_form.get_text();
-    password = password_form.get_text();
-    show_user_window();
+    std::string username = user_name_form.get_text();
+    std::string password = password_form.get_text();
+    UserData::getInstance().setUsername(username);
+    UserData::getInstance().setPassword(password);
+    std::fstream file_check;
+    std::string filename = "../user_data/user_data_" + UserData::getInstance().getUsername() + "_" + UserData::getInstance().getPassword() +".txt";
+    file_check.open(filename);
+    if (file_check.is_open()){
+        show_user_window();
+    }
+    else {
+        if (!user_error){
+            user_error = Gtk::AlertDialog::create();
+        }
+        else{
+            user_error->set_buttons({});
+            user_error->set_default_button(-1);
+            user_error->set_cancel_button(-1);  
+        }
+        user_error->set_message("Пользователя с таким логинм и паролем не существует");
+        user_error->set_cancel_button(1);
+        user_error->show(*this);
+    }
+    file_check.close();
+    
+    
 }
+
 void MyWindow::on_user_window_hide(){
     user_window.reset();
 }

@@ -32,7 +32,9 @@ SignUpWindow::SignUpWindow(MyWindow* user_window_) : user_window(user_window_),
 void SignUpWindow::on_register_clicked(){
     
     std::string username = (login.get_text().empty() ? "0":login.get_text());
-    
+    std::string mpassword = (password.get_text().empty() ? "0":password.get_text());
+    std::string mconfirm_password = (confirm_password.get_text().empty() ? "0":confirm_password.get_text());
+    bool mistakes = false;
     if(int res = check_username(username)){
         if (!username_error){
             username_error = Gtk::AlertDialog::create();
@@ -44,16 +46,36 @@ void SignUpWindow::on_register_clicked(){
         }
         if (res == 1){
             username_error->set_message("Пожалуйста введите имя пользователя");    
+            mistakes = true;
         }
         if (res == 2){
             username_error->set_message("Извините произошла непредвиденная ошибка, попробуйте еще раз");
+            mistakes = true;
         }
         if(res == 3){
             username_error->set_message("Пользователь с таким именем уже существует");
+            mistakes = true;
+        }
+        if(mpassword.size() < 5 || mpassword == "0"){
+            username_error->set_message("Длина пароля должна быть болше 5 символов");
+            mistakes = true;
+        }
+        if (mpassword != mconfirm_password){
+            username_error->set_message("Пароли должны совпадать");
+            mistakes = true;
         }
         username_error->set_cancel_button(1);
         username_error->show(*this);
+ 
     }
+    if (mistakes == false){
+        std::ofstream createfile;
+        std::string filename = "../user_data/user_data_" + username + "_" + mpassword + ".txt";
+        createfile.open(filename);
+        createfile << "IncomeOperation\n" << "0 0 0\n" << "OutComeOperation\n" << "0 0 0\n" << "DebtOperation\n" << "0 0 0\n";
+        createfile.close(); 
+    }
+    
 }
 
 void SignUpWindow::on_exit_clicked(){

@@ -5,17 +5,21 @@
 #include <gtkmm-4.0/gtkmm.h>
 #include "mainwindow.h"
 #include "PieChart.h"
+#include <map>
 
 class MainWindow;
 class MyWindow;
 
 class Operation: public Gtk::Window{
+    std::string type_;
     public:
-        
-        Operation(MyWindow *user_window);
-        ~Operation() {}
-        void get_data(std::string oper_name,std::vector<double>& data);
-        void on_confirm_button(const std::string operation_type = "NULL");
+        explicit Operation(const std::string& type);
+        virtual ~Operation() = default;
+        void get_data(std::string oper_name,std::map<std::string,double>& data);
+
+        void on_confirm_button(const std::string operation_type, std::map<std::string, double >& data,bool reset);
+
+        void on_reset_button(const std::string operation_type);
     protected:
         Gtk::Label LabelCat1;    
         Gtk::Label LabelCat2;    
@@ -24,6 +28,11 @@ class Operation: public Gtk::Window{
         Gtk::Box box_for_oper2;      
         Gtk::Box box_for_oper3; 
         Gtk::Box box;
+
+        Gtk::Box data_box;
+        Gtk::Label data_1;
+        Gtk::Label data_2;
+        Gtk::Label data_3;
         
         PieChart piechart;
         std::string username_;
@@ -40,66 +49,43 @@ class Operation: public Gtk::Window{
         
         Gtk::Button confirm_button;
         
-        std::vector<double> m_data;
+        std::map<std::string,double> m_data;
+
+        Gtk::Button reset_button;
 
         Gtk::Button exit_button;
-
-        
-
 };
 
 
-
-
-class IncomeOperation:public Operation{
+class IncomeOperation: public Operation{
     public:
-        IncomeOperation(MyWindow* user_window_ ): Operation(user_window_){
-            LabelTitle.set_text("Доходы");
-            LabelCat1.set_text("Зарплата");
-            LabelCat2.set_text("Переводы");
-            LabelCat3.set_text("Пособия");
-
-            get_data("IncomeOperation",m_data);
-            piechart.set_data(m_data);
-            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &IncomeOperation::on_confirm_button_income_clicked));
-
-        }
-       
-        
+        IncomeOperation(const std::string& type);
         void on_confirm_button_income_clicked();
+        void on_reset_button_income_clicked();
         
 
 };
 
 class OutComeOperation:public Operation{
     public:
-        OutComeOperation(MyWindow* user_window_ ): Operation(user_window_) {
-            LabelTitle.set_text("Доходы");
-            LabelCat1.set_text("Необходимые расходы");
-            LabelCat2.set_text("Развлечения ");
-            LabelCat3.set_text("Сбережения");
-            get_data("OutComeOperation",m_data);
-            piechart.set_data(m_data);
-            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &OutComeOperation::on_confirm_button_outcome_clicked));
-        }
+        OutComeOperation(const std::string& type);
         
         void on_confirm_button_outcome_clicked();
+        void on_reset_button_outcome_clicked();
 
 };
 
 class DebtOperation:public Operation{
     public:
-        DebtOperation(MyWindow* user_window_ ): Operation(user_window_){
-            LabelTitle.set_text("Задолженности");
-            LabelCat1.set_text("Выплаты по кредиту");
-            LabelCat2.set_text("Личный займ");
-            box.remove(box_for_oper3);
-            get_data("DebtOperation",m_data);
-            piechart.set_data(m_data);
-            confirm_button.signal_clicked().connect(sigc::mem_fun(*this, &DebtOperation::on_confirm_button_debt_clicked));
-        }
+        DebtOperation(const std::string& type);
         
         void on_confirm_button_debt_clicked();
+        void on_reset_button_debt_clicked();
 };
 
+
+class OperationFactory{
+    public:
+        static std::unique_ptr<Operation> createOperation(const std::string& type);
+};
 #endif
